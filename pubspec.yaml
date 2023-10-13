@@ -1,5 +1,5 @@
 name: money_display
-description: A new Flutter project.
+description: A Flutter widget for displaying Chinese currency format with flexible customization.
 repository: http://thispage.tech:9680/jclee1995/flutter_money_display.git
 homepage: http://thispage.tech:9680/jclee1995/flutter_money_display.git
 auth:
