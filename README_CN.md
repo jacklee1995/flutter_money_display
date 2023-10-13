@@ -1,13 +1,39 @@
 # Money Display
 
-一个用于在Flutter应用程序中显示中国货币格式的小部件，支持自定义设置。
+一个用于在Flutter应用程序中显示中国货币格式的组件，支持自定义设置。
 
 ## 作者信息
 
 - 作者：李俊才
-- 邮箱：291148484@163.com
-- 协议：MIT
-- 项目仓库：http://thispage.tech:9680/jclee1995/flutter_money_display.git
+- 邮箱：[291148484@163.com](291148484@163.com)
+- 协议：[MIT](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/LICENSE)
+- 项目仓库：[http://thispage.tech:9680/jclee1995/flutter_money_display.git](http://thispage.tech:9680/jclee1995/flutter_money_display.git)
+
+## 工作逻辑
+
+本模块提供了一个 `ChineseMoneyDisplayWidget` 组件旨在将货币金额显示为中国货币格式，例如 "¥123,456.78"，并提供了一些自定义选项来满足不同的需求。
+
+以下是本模块显示货币的大概逻辑：
+
+1. **构造函数参数**：`ChineseMoneyDisplayWidget` 构造函数接受多个参数，包括货币金额（`price`）以及用于自定义显示的各种选项，如整数位字体大小、小数位字体大小、最大数字、溢出符号等。
+
+2. **格式化价格**：`_formatPrice` 方法负责将传入的 `price` 格式化为富文本（`TextSpan`）。首先，它将价格转换为字符串并使用正则表达式分离整数部分和小数部分。
+
+3. **处理大数值**：如果价格大于等于 `maxNum`，则显示 `overflowSymbol`，通常是表示无限大的符号。如果价格小于 `maxNum`，则继续处理。
+
+4. **处理大于一万的价格**：如果价格大于一万，整数部分会被分隔成整数部分和小数部分（如果有的话）。如果没有小数部分，直接添加 "万" 符号。如果有小数部分，将整数部分和小数部分一同显示，整数部分后跟 "万" 符号。
+
+5. **处理大于一千的价格**：如果价格大于一千，整数部分会被格式化，千位之间会添加逗号分隔符。处理方式与上述类似，根据是否有小数部分，显示整数部分、小数部分和 "万" 符号。
+
+6. **处理小于一千的价格**：对于小于一千的价格，整数部分不添加逗号分隔符，而是根据是否有小数部分来显示整数部分、小数部分和 "万" 符号。
+
+7. **处理小数位**：如果价格有小数部分，它将被显示，小数部分会根据 `smallFontsize` 和 `decimalDigitColor` 进行样式设置。
+
+8. **整合文本**：所有这些文本片段都会被整合到一个 `TextSpan` 中，以便一起显示。
+
+9. **构建富文本**：在 `build` 方法中，富文本的一部分是 `currencySymbol`，它位于货币符号的前面。然后，`_formatPrice` 返回的富文本部分在 `RichText` 组件中显示。整个组件就是在屏幕上显示这个富文本。
+
+通过这种逻辑，`ChineseMoneyDisplayWidget` 组件能够将输入的价格以中国货币格式显示出来，并根据所提供的参数进行自定义样式。这使得开发人员能够轻松地将其集成到Flutter应用中以满足不同的货币显示需求。
 
 ## 用法
 
@@ -17,7 +43,7 @@
 ChineseMoneyDisplayWidget(99.89)
 ```
 
-要使用 `MoneyDisplay` 小部件，只需导入它并将其包括在您的Flutter应用程序中。下面是一个简单的示例：
+要使用 `MoneyDisplay` 组件，只需导入它并将其包括在您的Flutter应用程序中。下面是一个简单的示例：
 
 ```dart
 import 'package:flutter/material.dart';
@@ -96,7 +122,7 @@ class MoneyDisplayExample extends StatelessWidget {
 
 - **类型**: `double`
 - **默认值**: 无
-- **说明**: 价格，要在小部件中显示的货币金额。
+- **说明**: 价格，要在组件中显示的货币金额。
 
 ### integerFontsize
 
@@ -200,4 +226,4 @@ class MoneyDisplayExample extends StatelessWidget {
 - **默认值**: `FontWeight.normal`
 - **说明**: 货币符号的字体权重。
 
-这些参数允许您自定义货币显示小部件的外观和行为，以适应您的应用程序需求。您可以通过调整这些参数来控制字体大小、颜色、符号等外观属性，以及定义何时显示超过最大数字时的溢出符号。
+这些参数允许您自定义货币显示组件的外观和行为，以适应您的应用程序需求。您可以通过调整这些参数来控制字体大小、颜色、符号等外观属性，以及定义何时显示超过最大数字时的溢出符号。

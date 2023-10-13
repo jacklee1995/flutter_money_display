@@ -6,9 +6,35 @@ A Flutter widget for displaying Chinese currency format with flexible customizat
 ## Author
 
 - Author: Juncai Li
-- Email: 291148484@163.com
-- License: MIT
-- Repository: http://thispage.tech:9680/jclee1995/flutter_money_display.git
+- Email: [291148484@163.com](291148484@163.com)
+- License: [MIT](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/LICENSE)
+- Repository: [http://thispage.tech:9680/jclee1995/flutter_money_display.git](http://thispage.tech:9680/jclee1995/flutter_money_display.git)
+
+## Workflow Logic
+
+This module provides a `ChineseMoneyDisplayWidget` component designed to display currency amounts in Chinese currency format, such as "¥123,456.78," and offers various customization options to meet different requirements.
+
+The approximate logic for displaying currency in this module is as follows:
+
+1. **Constructor Parameters**: The `ChineseMoneyDisplayWidget` constructor takes multiple parameters, including the currency amount (`price`) and various options for custom display, such as integer part font size, decimal part font size, maximum number, overflow symbol, and more.
+
+2. **Formatting the Price**: The `_formatPrice` method is responsible for formatting the incoming `price` into rich text (`TextSpan`). First, it converts the price into a string and uses regular expressions to separate the integer and decimal parts.
+
+3. **Handling Large Values**: If the price is greater than or equal to `maxNum`, it displays the `overflowSymbol`, typically a symbol representing infinity. If the price is less than `maxNum`, the processing continues.
+
+4. **Handling Prices Greater Than Ten Thousand**: If the price is greater than ten thousand, the integer part is divided into an integer part and a decimal part (if any). If there is no decimal part, the "万" symbol is directly added. If there is a decimal part, both the integer and decimal parts are displayed together, with the integer part followed by the "万" symbol.
+
+5. **Handling Prices Greater Than a Thousand**: If the price is greater than a thousand, the integer part is formatted, and a comma separator is added between thousands. The processing is similar to the above, depending on whether there is a decimal part, it displays the integer part, decimal part, and the "万" symbol.
+
+6. **Handling Prices Less Than a Thousand**: For prices less than a thousand, the integer part does not have a comma separator. Instead, it displays the integer part, decimal part (if any), and the "万" symbol based on whether there is a decimal part.
+
+7. **Handling Decimal Places**: If the price has a decimal part, it is displayed, and the style is set according to `smallFontsize` and `decimalDigitColor`.
+
+8. **Text Integration**: All these text segments are integrated into a `TextSpan` for displaying together.
+
+9. **Building Rich Text**: In the `build` method, a part of the rich text is the `currencySymbol`, which appears in front of the currency symbol. Then, the rich text part returned by `_formatPrice` is displayed in the `RichText` component. The entire component is responsible for displaying this rich text on the screen.
+
+Through this logic, the `ChineseMoneyDisplayWidget` component can display the input price in Chinese currency format and customize the style based on the provided parameters. This allows developers to easily integrate it into Flutter applications to meet various currency display requirements.
 
 ## Usage
 
