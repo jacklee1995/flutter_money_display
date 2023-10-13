@@ -72,7 +72,7 @@ class ChineseMoneyDisplayWidget extends StatelessWidget {
   /// 分别表示万位分隔符、货币符号和溢出符号的颜色，默认为红色
   const ChineseMoneyDisplayWidget(
     this.price, {
-    Key? key,
+    super.key,
     this.integerFontsize = 18,
     this.decimalFontsize = 15,
     this.tenThousandSymbolSize = 15,
