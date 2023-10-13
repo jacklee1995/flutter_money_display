@@ -8,6 +8,7 @@
 - 邮箱：[291148484@163.com](291148484@163.com)
 - 协议：[MIT](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/LICENSE)
 - 项目仓库：[http://thispage.tech:9680/jclee1995/flutter_money_display.git](http://thispage.tech:9680/jclee1995/flutter_money_display.git)
+- English Document: [https://github.com/jacklee1995/flutter_money_display/blob/master/README.md](https://github.com/jacklee1995/flutter_money_display/blob/master/README.md)
 
 ## 工作逻辑
 
@@ -113,6 +114,8 @@ class MoneyDisplayExample extends StatelessWidget {
 ```
 
 ![Alt text](example_yqB2iNalbc.png)
+
+![https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png](https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png)
 
 ## ChineseMoneyDisplayWidget 参数说明
 

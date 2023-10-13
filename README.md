@@ -9,6 +9,7 @@ A Flutter widget for displaying Chinese currency format with flexible customizat
 - Email: [291148484@163.com](291148484@163.com)
 - License: [MIT](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/LICENSE)
 - Repository: [http://thispage.tech:9680/jclee1995/flutter_money_display.git](http://thispage.tech:9680/jclee1995/flutter_money_display.git)
+- 中文文档：[http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/README_CN.md](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/README_CN.md)
 
 ## Workflow Logic
 
@@ -114,6 +115,8 @@ class MoneyDisplayExample extends StatelessWidget {
 ```
 
 ![Alt text](example_yqB2iNalbc.png)
+
+![https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png](https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png)
 
 ## ChineseMoneyDisplayWidget Parameter Description
 
