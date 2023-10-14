@@ -2,10 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2023-10-14
 
-## [1.0.0+3] - 2023-10-14
+The default constructor parameter form of MoneyDisplayWidget is changed to:
 
-
+```dart
+ const MoneyDisplayWidget(
+    this.price, {
+    super.key,
+    this.currencySymbol = CurrencySymbol.yuan,
+    this.currencySymbolSize = 20,
+    this.currencySymbolColor = Colors.red,
+    this.currencySymbolFontWeight = FontWeight.normal,
+    this.integerPartSize = 25,
+    this.integerPartColor = Colors.red,
+    this.integerPartFontWeight = FontWeight.normal,
+    this.decimalPointSize = 20,
+    this.decimalPointColor = Colors.red,
+    this.decimalPointFontWeight = FontWeight.normal,
+    this.decimalPartSize = 20,
+    this.decimalPartColor = Colors.red,
+    this.decimalPartFontWeight = FontWeight.normal,
+    this.showTrailingZeros = false,
+    this.customCurrencySymbol = '',
+  });
+```
 
 ## [1.0.0+2] - 2023-10-14
 
