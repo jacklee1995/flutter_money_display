@@ -95,9 +95,9 @@ class MoneyDisplayWidget extends StatelessWidget {
   /// [showTrailingZeros] 指定是否在小数部分显示尾随零（默认为false）
   ///
   /// [customCurrencySymbol] 允许使用自定义货币符号（默认为空字符串）
-  const MoneyDisplayWidget({
+  const MoneyDisplayWidget(
+    this.price, {
     super.key,
-    required this.price,
     this.currencySymbol = CurrencySymbol.yuan,
     this.currencySymbolSize = 20,
     this.currencySymbolColor = Colors.red,

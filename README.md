@@ -64,7 +64,7 @@ class MoneyDisplayExample extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title:
-              const Text('Money Display Example'),
+              const Text('Money Display Example'), // Setting the app bar title.
         ),
         body: CustomScrollView(
           slivers: [
@@ -74,7 +74,7 @@ class MoneyDisplayExample extends StatelessWidget {
                 children: [
                   // Widget for displaying money with a euro symbol.
                   MoneyDisplayWidget(
-                    price: 192837465.2523432, // Set the price to be displayed.
+                    192837465.2523432, // Set the price to be displayed.
                     currencySymbol:
                         CurrencySymbol.euro, // Set the currency symbol to euro.
                     showTrailingZeros:
@@ -109,7 +109,7 @@ class MoneyDisplayExample extends StatelessWidget {
                   ),
                   // Widget for displaying money with a custom currency symbol.
                   MoneyDisplayWidget(
-                    price: 12345, // Set the price to be displayed.
+                    12345, // Set the price to be displayed.
                     currencySymbol: CurrencySymbol
                         .custom, // Set the currency symbol to custom.
                     customCurrencySymbol:
@@ -198,6 +198,7 @@ class MoneyDisplayExample extends StatelessWidget {
     );
   }
 }
+
 ```
 
 ![https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_OZYpI1Nuky.png](https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_OZYpI1Nuky.png)
