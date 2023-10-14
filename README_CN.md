@@ -63,7 +63,7 @@ class MoneyDisplayExample extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title:
-              const Text('Money Display Example'), // Setting the app bar title.
+              const Text('Money Display Example'),
         ),
         body: CustomScrollView(
           slivers: [
