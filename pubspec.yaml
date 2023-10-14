@@ -1,6 +1,6 @@
 name: money_display
 description: A Flutter widget for displaying Chinese currency format with flexible customization.
-repository: http://thispage.tech:9680/jclee1995/flutter_money_display.git
+repository: https://github.com/jacklee1995/flutter_money_display
 homepage: http://thispage.tech:9680/jclee1995/flutter_money_display.git
 auth:
   name: Jcak Lee
@@ -34,7 +34,7 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  # uses-material-design: true
+  uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   # assets:

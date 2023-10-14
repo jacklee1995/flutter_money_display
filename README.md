@@ -5,9 +5,9 @@ A Flutter widget for displaying Chinese currency format with flexible customizat
 
 ## Author
 
-- Author: Juncai Li
-- Email: [291148484@163.com](291148484@163.com)
-- License: [MIT](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/LICENSE)
+- **Author**: [Juncai Li](https://blog.csdn.net/qq_28550263?spm=1011.2415.3001.5343)
+- **Email**: [291148484@163.com](291148484@163.com)
+- **License**: [MIT](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/LICENSE)
 - Repository: [http://thispage.tech:9680/jclee1995/flutter_money_display.git](http://thispage.tech:9680/jclee1995/flutter_money_display.git)
 - 中文文档：[http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/README_CN.md](http://thispage.tech:9680/jclee1995/flutter_money_display/-/blob/master/README_CN.md)
 
@@ -56,57 +56,143 @@ void main() {
 }
 
 class MoneyDisplayExample extends StatelessWidget {
-  const MoneyDisplayExample({super.key});
+  const MoneyDisplayExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Money Display 示例'),
+          title:
+              const Text('Money Display Example'), // Setting the app bar title.
         ),
-        body: const Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ChineseMoneyDisplayWidget(0.9),
-              ChineseMoneyDisplayWidget(0.17),
-              ChineseMoneyDisplayWidget(0.1796),
-              ChineseMoneyDisplayWidget(6),
-              ChineseMoneyDisplayWidget(6.1),
-              ChineseMoneyDisplayWidget(9.16),
-              ChineseMoneyDisplayWidget(9.1671),
-              ChineseMoneyDisplayWidget(10),
-              ChineseMoneyDisplayWidget(10.7),
-              ChineseMoneyDisplayWidget(10.71),
-              ChineseMoneyDisplayWidget(999),
-              ChineseMoneyDisplayWidget(999.7),
-              ChineseMoneyDisplayWidget(999.99),
-              ChineseMoneyDisplayWidget(1000),
-              ChineseMoneyDisplayWidget(1995.0),
-              ChineseMoneyDisplayWidget(1995.07),
-              ChineseMoneyDisplayWidget(6666.66),
-              ChineseMoneyDisplayWidget(9999),
-              ChineseMoneyDisplayWidget(99999),
-              ChineseMoneyDisplayWidget(999999),
-              ChineseMoneyDisplayWidget(996786),
-              ChineseMoneyDisplayWidget(9999999), // maxNum 默认值为10000
-              ChineseMoneyDisplayWidget(
-                9999999,
-                maxNum: 10000001,
+        body: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Widget for displaying money with a euro symbol.
+                  MoneyDisplayWidget(
+                    price: 192837465.2523432, // Set the price to be displayed.
+                    currencySymbol:
+                        CurrencySymbol.euro, // Set the currency symbol to euro.
+                    showTrailingZeros:
+                        false, // Determine whether to show trailing zeros.
+                    currencySymbolSize:
+                        26, // Set the size of the currency symbol.
+                    currencySymbolColor: Color.fromARGB(255, 0, 43,
+                        32), // Set the color of the currency symbol.
+                    currencySymbolFontWeight: FontWeight
+                        .w800, // Set the font weight of the currency symbol.
+                    integerPartColor: Color.fromARGB(
+                        255, 206, 192, 0), // Set the color of the integer part.
+                    integerPartSize: 46, // Set the size of the integer part.
+                    decimalPartColor:
+                        Colors.purple, // Set the color of the decimal part.
+                  ),
+                  // Widget for displaying Chinese money with custom options.
+                  ChineseMoneyDisplayWidget(
+                    9999879999.92347,
+                    maxNum: 10000000000, // Set a maximum number for display.
+                    integerColor:
+                        Colors.blue, // Set the color of the integer part.
+                    integerFontsize:
+                        25, // Set the font size of the integer part.
+                    decimalFontsize:
+                        21, // Set the font size of the decimal part.
+                    currencySymbolColor:
+                        Colors.pink, // Set the color of the currency symbol.
+                    tenThousandSymbol: 'w', // Set the ten thousand symbol.
+                    tenThousandSymbolColor: Color.fromARGB(255, 0, 156,
+                        78), // Set the color of the ten thousand symbol.
+                  ),
+                  // Widget for displaying money with a custom currency symbol.
+                  MoneyDisplayWidget(
+                    price: 12345, // Set the price to be displayed.
+                    currencySymbol: CurrencySymbol
+                        .custom, // Set the currency symbol to custom.
+                    customCurrencySymbol:
+                        '💲', // If using a custom currency symbol, set it here.
+                    showTrailingZeros:
+                        false, // Determine whether to show trailing zeros.
+                  ),
+                ],
               ),
-              ChineseMoneyDisplayWidget(
-                9999999.97,
-                maxNum: 10000001,
-                integerColor: Colors.blue,
-                integerFontsize: 25,
-                decimalFontsize: 21,
-                currencySymbolColor: Colors.pink,
-                tenThousandSymbol: 'w',
-                tenThousandSymbolColor: Colors.limeAccent,
-              ),
-            ],
-          ),
+            ),
+            SliverGrid.count(
+              crossAxisCount: 4,
+              children: const [
+                Center(child: ChineseMoneyDisplayWidget(0.9)),
+                Center(child: ChineseMoneyDisplayWidget(0.17)),
+                Center(child: ChineseMoneyDisplayWidget(0.1796)),
+                Center(child: ChineseMoneyDisplayWidget(6)),
+                Center(child: ChineseMoneyDisplayWidget(6.1)),
+                Center(
+                  child: ChineseMoneyDisplayWidget(
+                    9.16,
+                    decimalFontsize: 29,
+                    integerColor: Color.fromARGB(255, 0, 150, 187),
+                  ),
+                ),
+                Center(child: ChineseMoneyDisplayWidget(9.1671)),
+                Center(child: ChineseMoneyDisplayWidget(10)),
+                Center(child: ChineseMoneyDisplayWidget(10.7)),
+                Center(
+                  child: ChineseMoneyDisplayWidget(
+                    10.71,
+                    integerFontsize: 25,
+                  ),
+                ),
+                Center(child: ChineseMoneyDisplayWidget(999)),
+                Center(child: ChineseMoneyDisplayWidget(999.7)),
+                Center(
+                  child: ChineseMoneyDisplayWidget(
+                    999.99,
+                    decimalDigitColor: Color.fromARGB(255, 80, 0, 133),
+                  ),
+                ),
+                Center(child: ChineseMoneyDisplayWidget(1000)),
+                Center(child: ChineseMoneyDisplayWidget(1995.0)),
+                Center(child: ChineseMoneyDisplayWidget(1995.07)),
+                Center(child: ChineseMoneyDisplayWidget(6666.66)),
+                Center(child: ChineseMoneyDisplayWidget(9999)),
+                Center(
+                  child: ChineseMoneyDisplayWidget(
+                    99999,
+                    currencyFontWeight: FontWeight.w900,
+                    currencySymbolColor: Color.fromARGB(255, 22, 0, 148),
+                    currencySymbolFontsize: 56,
+                  ),
+                ),
+                Center(child: ChineseMoneyDisplayWidget(999999)),
+                Center(child: ChineseMoneyDisplayWidget(996786)),
+                Center(
+                  child: ChineseMoneyDisplayWidget(
+                      9999999), // maxNum defaults to 10000.
+                ),
+                Center(
+                  child: ChineseMoneyDisplayWidget(
+                    9999999,
+                    maxNum:
+                        10000001, // Set a custom maximum number for display.
+                  ),
+                ),
+                Center(
+                  child: ChineseMoneyDisplayWidget(
+                    9999999.97,
+                    maxNum: 10000001,
+                    integerColor: Colors.blue,
+                    integerFontsize: 25,
+                    decimalFontsize: 21,
+                    currencySymbolColor: Colors.pink,
+                    tenThousandSymbol: 'w',
+                    tenThousandSymbolColor: Color.fromARGB(255, 0, 156, 78),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -114,11 +200,9 @@ class MoneyDisplayExample extends StatelessWidget {
 }
 ```
 
-![Alt text](example_yqB2iNalbc.png)
+![https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_OZYpI1Nuky.png](https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_OZYpI1Nuky.png)
 
-![https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png](https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png)
-
-## ChineseMoneyDisplayWidget Parameter Description
+## class ChineseMoneyDisplayWidget
 
 In this example, we import the `ChineseMoneyDisplayWidget` and use it to customize the style and symbol for displaying prices.
 
@@ -231,3 +315,44 @@ In this example, we import the `ChineseMoneyDisplayWidget` and use it to customi
 - **Description**: The font weight for the currency symbol.
 
 These parameters allow you to customize the appearance and behavior of the ChineseMoneyDisplayWidget to suit the needs of your application. You can control font size, color, symbols, and define the symbol to be displayed when the number exceeds the maximum value by adjusting these parameters.
+
+## Class MoneyDisplayWidget
+
+The `MoneyDisplayWidget` class is a component used for displaying formatted currency values in a customizable manner. It supports the following properties and methods:
+
+### Properties
+
+- `price` (double): The price to be displayed.
+- `currencySymbol` (CurrencySymbol): The type of currency symbol, defaulting to [CurrencySymbol.yuan].
+- `customCurrencySymbol` (String): If `currencySymbol` is set to `CurrencySymbol.custom`, this is the custom currency symbol used, defaulting to an empty string.
+- `currencySymbolSize` (double): The size of the currency symbol, defaulting to 20.
+- `currencySymbolColor` (Color): The color of the currency symbol, defaulting to red.
+- `currencySymbolFontWeight` (FontWeight): The font weight of the currency symbol, defaulting to normal.
+- `integerPartSize` (double): The size of the integer part, defaulting to 25.
+- `integerPartColor` (Color): The color of the integer part, defaulting to red.
+- `integerPartFontWeight` (FontWeight): The font weight of the integer part, defaulting to normal.
+- `decimalPointSize` (double): The size of the decimal point, defaulting to 20.
+- `decimalPointColor` (Color): The color of the decimal point, defaulting to red.
+- `decimalPointFontWeight` (FontWeight): The font weight of the decimal point, defaulting to normal.
+- `decimalPartSize` (double): The size of the decimal part, defaulting to 20.
+- `decimalPartColor` (Color): The color of the decimal part, defaulting to red.
+- `decimalPartFontWeight` (FontWeight): The font weight of the decimal part, defaulting to normal.
+- `showTrailingZeros` (bool): Whether to display trailing zeros in the decimal part, defaulting to `false`.
+- `customCurrencySymbol` (String): Allows for the use of a custom currency symbol, defaulting to an empty string.
+
+### Methods
+
+- `MoneyDisplayWidget({ ... })`: Constructor used for creating an instance of `MoneyDisplayWidget`.
+- `build(BuildContext context)`: Build method, returns a `RichText` component used to display the formatted currency value.
+- `formatPrice(double price, bool showTrailingZeros)`: Method for formatting prices, converting the price into a Map object containing the integer and decimal parts.
+
+## Class CurrencySymbol
+
+`CurrencySymbol` is an enumeration type used to define the type of currency symbol. It includes the following options:
+
+- `CurrencySymbol.yuan`: Chinese Yuan symbol.
+- `CurrencySymbol.dollar`: US Dollar symbol.
+- `CurrencySymbol.euro`: Euro symbol.
+- `CurrencySymbol.pound`: British Pound symbol.
+- `CurrencySymbol.custom`: Custom currency symbol.
+-
