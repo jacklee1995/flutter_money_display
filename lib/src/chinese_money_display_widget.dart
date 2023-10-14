@@ -7,6 +7,7 @@
 /// 有关MIT协议的详细信息，请参阅项目的许可证文档（通常在项目的根目录中的"LICENSE"文件）
 ///
 import 'package:flutter/material.dart';
+import './utils.dart';
 
 class ChineseMoneyDisplayWidget extends StatelessWidget {
   /// 价格，要显示的货币金额
@@ -69,7 +70,7 @@ class ChineseMoneyDisplayWidget extends StatelessWidget {
   /// [currencySymbol]是一个可选参数，表示货币符号，默认为"¥"
   ///
   /// [tenThousandSymbolColor]、[currencySymbolColor]、[overflowSymbolColor]是可选参数，
-  /// 分别表示万位分隔符、货币符号和溢出符号的颜色，默认为红色
+  /// 分别表示万字单位符号、货币符号和溢出符号的颜色，默认为红色
   const ChineseMoneyDisplayWidget(
     this.price, {
     super.key,
@@ -148,7 +149,7 @@ class ChineseMoneyDisplayWidget extends StatelessWidget {
             ''; // 万级小数部分
         // 小数位为空
         if (tenThousandDecimalPartStr == '') {
-          return _addWan(_fText(tenThousandIntegerPartStr, integerFontsize,
+          return _addWan(fText(tenThousandIntegerPartStr, integerFontsize,
               integerColor, integerFontWeight));
         }
         // 需要小数位
@@ -156,9 +157,9 @@ class ChineseMoneyDisplayWidget extends StatelessWidget {
           return _addWan(
             TextSpan(
               children: [
-                _fText(tenThousandIntegerPartStr, integerFontsize, integerColor,
+                fText(tenThousandIntegerPartStr, integerFontsize, integerColor,
                     integerFontWeight), // 整数位
-                _fText('.$tenThousandDecimalPartStr', decimalFontsize,
+                fText('.$tenThousandDecimalPartStr', decimalFontsize,
                     decimalDigitColor, decimalFontWeight) // 小数位
               ],
             ),
@@ -169,16 +170,16 @@ class ChineseMoneyDisplayWidget extends StatelessWidget {
       else if (integerPart >= 1000) {
         // 小数位为空
         if (decimalPartStr == '') {
-          return _fText(_formatWithComma(integerPartStr), integerFontsize,
+          return fText(formatWithComma(integerPartStr), integerFontsize,
               integerColor, integerFontWeight); //整数位
         }
         // 需要小数位
         else {
           return TextSpan(
             children: [
-              _fText(_formatWithComma(integerPartStr), integerFontsize,
+              fText(formatWithComma(integerPartStr), integerFontsize,
                   integerColor, integerFontWeight), // 整数位
-              _fText('.$decimalPartStr', decimalFontsize, decimalDigitColor,
+              fText('.$decimalPartStr', decimalFontsize, decimalDigitColor,
                   decimalFontWeight) // 小数位
             ],
           );
@@ -188,16 +189,16 @@ class ChineseMoneyDisplayWidget extends StatelessWidget {
       else {
         // 小数位为空
         if (decimalPartStr == '') {
-          return _fText(
+          return fText(
               integerPartStr, integerFontsize, integerColor, integerFontWeight);
         }
         // 需要小数位
         else {
           return TextSpan(
             children: [
-              _fText(integerPartStr, integerFontsize, integerColor,
+              fText(integerPartStr, integerFontsize, integerColor,
                   integerFontWeight), // 整数位
-              _fText('.$decimalPartStr', decimalFontsize, decimalDigitColor,
+              fText('.$decimalPartStr', decimalFontsize, decimalDigitColor,
                   decimalFontWeight) // 小数位
             ],
           );
@@ -209,40 +210,13 @@ class ChineseMoneyDisplayWidget extends StatelessWidget {
     }
   }
 
-  // 格式化整数部分，添加千分位分隔符
-  String _formatWithComma(String price) {
-    final parts = price.split('.');
-    final wholePart = parts[0];
-    final decimalPart = parts.length > 1 ? '.${parts[1]}' : '';
-    final regex = RegExp(r'\B(?=(\d{3})+(?!\d))');
-    return wholePart.replaceAllMapped(regex, (Match match) => ',') +
-        decimalPart;
-  }
-
-  // 创建富文本
-  TextSpan _fText(
-    String text,
-    double fontSize,
-    Color color,
-    FontWeight fontWeight,
-  ) {
-    return TextSpan(
-      text: text,
-      style: TextStyle(
-        fontSize: fontSize,
-        color: color,
-        fontWeight: fontWeight,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     // 构建富文本显示价格
     return RichText(
       text: TextSpan(
         children: [
-          _fText(currencySymbol, currencySymbolFontsize, currencySymbolColor,
+          fText(currencySymbol, currencySymbolFontsize, currencySymbolColor,
               currencyFontWeight), // 添加货币符号，字体大小为decimalFontsize
           _formatPrice(),
         ],

@@ -113,7 +113,7 @@ class MoneyDisplayExample extends StatelessWidget {
 }
 ```
 
-![Alt text](example_yqB2iNalbc.png)
+
 
 ![https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png](https://raw.githubusercontent.com/jacklee1995/flutter_money_display/master/example_yqB2iNalbc.png)
 
@@ -230,3 +230,54 @@ class MoneyDisplayExample extends StatelessWidget {
 - **说明**: 货币符号的字体权重。
 
 这些参数允许您自定义货币显示组件的外观和行为，以适应您的应用程序需求。您可以通过调整这些参数来控制字体大小、颜色、符号等外观属性，以及定义何时显示超过最大数字时的溢出符号。
+
+
+
+
+## 类 `MoneyDisplayWidget`说明
+
+`MoneyDisplayWidget` 类是一个用于显示格式化货币值的组件.normal，具有可自定义的选项。它支持以下属性和方法：
+
+### 属性
+
+- `price` (double): 要显示的价格。
+- `currencySymbol` (CurrencySymbol): 货币符号的类型，默认为 [CurrencySymbol.yuan]。
+- `customCurrencySymbol` (String): 如果 `currencySymbol` 设置为 `CurrencySymbol.custom`，则使用的自定义货币符号，默认为空字符串。
+- `currencySymbolSize` (double): 货币符号的大小，默认为 20。
+- `currencySymbolColor` (Color): 货币符号的颜色，默认为红色。
+- `currencySymbolFontWeight` (FontWeight): 货币符号的字体粗细，默认为正常。
+- `integerPartSize` (double): 整数部分的大小，默认为 25。
+- `integerPartColor` (Color): 整数部分的颜色，默认为红色。
+- `integerPartFontWeight` (FontWeight): 整数部分的字体粗细，默认为正常。
+- `decimalPointSize` (double): 小数点的大小，默认为 20。
+- `decimalPointColor` (Color): 小数点的颜色，默认为红色。
+- `decimalPointFontWeight` (FontWeight): 小数点的字体粗细，默认为正常。
+- `decimalPartSize` (double): 小数部分的大小，默认为 20。
+- `decimalPartColor` (Color): 小数部分的颜色，默认为红色。
+- `decimalPartFontWeight` (FontWeight): 小数部分的字体粗细，默认为正常。
+- `showTrailingZeros` (bool): 是否在小数部分显示尾随零，默认为 `false`。
+- `customCurrencySymbol` (String): 允许使用自定义货币符号，默认为空字符串。
+
+### 方法
+
+- `MoneyDisplayWidget({ ... })`: 构造函数，用于创建 `MoneyDisplayWidget` 实例。
+- `build(BuildContext context)`: 构建方法，返回一个 `RichText` 组件.normal，用于显示格式化的货币值。
+- `formatPrice(double price, bool showTrailingZeros)`: 格式化价格的方法，将价格转换为包含整数部分和小数部分的 Map 对象。
+
+## 类 `CurrencySymbol`
+
+`CurrencySymbol` 是一个枚举类型，用于定义货币符号的类型。它包括以下选项：
+
+- `CurrencySymbol.yuan`: 人民币符号。
+- `CurrencySymbol.dollar`: 美元符号。
+- `CurrencySymbol.euro`: 欧元符号。
+- `CurrencySymbol.pound`: 英镑符号。
+- `CurrencySymbol.custom`: 自定义货币符号。
+
+这是一个简单的 API 文档示例，您可以根据需要添加更多详细信息、示例和注意事项。
+
+---
+
+![Alt text](./example_yqB2iNalbc.png)
+
+![Alt text](./example_OZYpI1Nuky.png)
